@@ -57,10 +57,10 @@ const SignUpPage = () => {
 
   return (
     <div className='min-h-screen grid lg:grid-cols-2'>
-      {/* LEFT */}
+    
       <div className='flex flex-col justify-center items-center p-6 sm:p-12'>
         <div className='w-full max-w-md space-y-8'>
-          {/* Logo */}
+       
           <div className='text-center mb-8'>
             <div className='flex flex-col items-center gap-2 group'>
               <div
@@ -74,10 +74,10 @@ const SignUpPage = () => {
             </div>
           </div>
 
-          {/* Form */}
+        
           <form onSubmit={handleSubmit} className='space-y-6'>
 
-            {/* Full Name */}
+          
             <div className='form-control'>
               <label className='label'>
                 <span className='label-text font-medium'>Full Name</span>
@@ -96,7 +96,7 @@ const SignUpPage = () => {
               </div>
             </div>
 
-            {/* Email */}
+          
             <div className='form-control'>
               <label className='label'>
                 <span className='label-text font-medium'>Email</span>
@@ -115,7 +115,7 @@ const SignUpPage = () => {
               </div>
             </div>
 
-            {/* Password */}
+          
             <div className='form-control'>
               <label className='label'>
                 <span className='label-text font-medium'>Password</span>
@@ -166,7 +166,7 @@ const SignUpPage = () => {
           </div>
         </div>
       </div>
-      {/*right side*/}
+     
       <AuthImagePattern
       title="Join our community"
       subtitle="Connect with friends,share moments and stay in touch with your loved ones"
