@@ -23,7 +23,7 @@ const PORT = process.env.PORT || 5000;
 app.use(express.json());
 app.use(cookieParser());
 app.use(cors({
-  origin: "http://localhost:5173", // Update this if your frontend is hosted elsewhere
+  origin: ["http://localhost:5173", "https://pingme-chat.netlify.app"], // Added your Netlify app URL
   credentials: true,
 }));
 
