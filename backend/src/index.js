@@ -31,7 +31,7 @@ app.use(cors({
 app.use("/api/auth", authRoutes);
 app.use("/api/messages", messageRoute);
 
-// Serve static frontend in production
+
 if (process.env.NODE_ENV === "production") {
   app.use(express.static(path.join(__dirname, "../frontend/dist")));
   app.get("/*", (req, res) => {
@@ -39,9 +39,9 @@ if (process.env.NODE_ENV === "production") {
   });
 }
 
-// Start server
+
 server.listen(PORT, () => {
-  console.log("✅ Server running on port:", PORT);
+  console.log("Server running on port:", PORT);
   connectDB();
 });
 
