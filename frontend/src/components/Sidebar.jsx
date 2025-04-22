@@ -1,4 +1,3 @@
-
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";  // Import navigate
 import { useChatStore } from "../store/useChatStore";
@@ -10,6 +9,7 @@ const Sidebar = () => {
   const { getUsers, users, selectedUser, setSelectedUser, isUsersLoading } = useChatStore();
   const { onlineUsers } = useAuthStore();
   const [showOnlineOnly, setShowOnlineOnly] = useState(false);
+  const [sidebarOpen, setSidebarOpen] = useState(true); // State for mobile sidebar visibility
   const navigate = useNavigate();  // Initialize navigate
 
   useEffect(() => {
@@ -29,13 +29,24 @@ const Sidebar = () => {
   };
 
   return (
-    <aside className="h-full w-20 lg:w-72 border-r border-base-300 flex flex-col transition-all duration-200">
+    <aside className={`transition-all duration-200 h-full ${sidebarOpen ? 'w-72' : 'w-20'} sm:w-72 border-r border-base-300 flex flex-col`}>
+      {/* Toggle Sidebar Button for Mobile */}
+      <button
+        className="lg:hidden p-3 text-white bg-blue-500 rounded-md"
+        onClick={() => setSidebarOpen(!sidebarOpen)}
+      >
+        {sidebarOpen ? "Close" : "Open"} Sidebar
+      </button>
+
+      {/* Sidebar Header */}
       <div className="border-b border-base-300 w-full p-5">
         <div className="flex items-center gap-2">
           <Users className="size-6" />
-          <span className="font-medium hidden lg:block">Contacts</span>
+          <span className={`font-medium ${sidebarOpen ? 'block' : 'hidden'} lg:block`}>Contacts</span>
         </div>
-        <div className="mt-3 hidden lg:flex items-center gap-2">
+
+        {/* "Show online only" checkbox */}
+        <div className={`mt-3 ${sidebarOpen ? 'flex' : 'hidden'} lg:flex items-center gap-2`}>
           <label className="cursor-pointer flex items-center gap-2">
             <input
               type="checkbox"
@@ -51,7 +62,8 @@ const Sidebar = () => {
         </div>
       </div>
 
-      <div className="overflow-y-auto w-full py-3">
+      {/* User list */}
+      <div className="overflow-y-auto w-full py-3 flex-1">
         {filteredUsers.map((user) => (
           <button
             key={user._id}
@@ -69,7 +81,7 @@ const Sidebar = () => {
               )}
             </div>
 
-            <div className="hidden lg:block text-left min-w-0">
+            <div className={`hidden lg:block text-left min-w-0 ${sidebarOpen ? '' : 'lg:hidden'}`}>
               <div className="font-medium truncate">{user.fullName}</div>
               <div className="text-sm text-zinc-400">
                 {onlineUsers.includes(user._id) ? "Online" : "Offline"}
@@ -87,4 +99,3 @@ const Sidebar = () => {
 };
 
 export default Sidebar;
-
