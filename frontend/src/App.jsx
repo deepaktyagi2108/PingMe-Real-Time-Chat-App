@@ -5,7 +5,7 @@ import SignUpPage from './pages/SignUpPage.jsx';
 import HomePage from './pages/HomePage.jsx';
 import LoginPage from './pages/LoginPage.jsx';
 import ProfilePage from './pages/ProfilePage.jsx';
-// import SettingsPage from './pages/SettingsPage.jsx';
+
 import { Loader } from 'lucide-react';
 import { useAuthStore } from './store/useAuthStore.js';
 import {Toaster} from "react-hot-toast"

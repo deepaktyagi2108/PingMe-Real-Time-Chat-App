@@ -1,7 +1,6 @@
 
 import { useChatStore } from "../store/useChatStore";
 import { useEffect, useRef } from "react";
-
 import ChatHeader from "./ChatHeader";
 import MessageInput from "./MessageInput";
 import MessageSkeleton from "./skeletons/MessageSkeleton";
@@ -47,13 +46,11 @@ const ChatContainer = () => {
 
   return (
     <div className="flex-1 flex flex-col bg-base-100 h-full overflow-hidden">
-      {/* Sticky Header */}
       <div className="sticky top-0 z-10 bg-base-100 border-b">
         <ChatHeader />
       </div>
 
-      {/* Messages */}
-      <div className="flex-1 overflow-y-auto px-2 sm:px-4 py-4 space-y-6 bg-base-200">
+      <div className="flex-1 overflow-y-auto px-2 sm:px-4 py-4 pb-28 space-y-6 bg-base-200">
         {messages.map((message, index) => (
           <div
             key={message._id}
@@ -62,7 +59,6 @@ const ChatContainer = () => {
               message.senderId === authUser._id ? "chat-end" : "chat-start"
             }`}
           >
-            {/* Avatar */}
             <div className="chat-image avatar">
               <div className="w-10 h-10 rounded-full border shadow">
                 <img
@@ -76,12 +72,10 @@ const ChatContainer = () => {
               </div>
             </div>
 
-            {/* Timestamp */}
             <div className="chat-header text-sm text-gray-500 mb-1">
               <time>{formatMessageTime(message.createdAt)}</time>
             </div>
 
-            {/* Bubble */}
             <div className="chat-bubble max-w-xs sm:max-w-md break-words">
               {message.image && (
                 <img
@@ -96,7 +90,6 @@ const ChatContainer = () => {
         ))}
       </div>
 
-      {/* Sticky Input */}
       <div className="sticky bottom-0 z-10 bg-base-100 border-t">
         <MessageInput />
       </div>
@@ -105,3 +98,4 @@ const ChatContainer = () => {
 };
 
 export default ChatContainer;
+
